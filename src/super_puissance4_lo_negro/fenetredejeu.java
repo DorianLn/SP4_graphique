@@ -26,73 +26,62 @@ public class fenetredejeu extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        jPanel2 = new javax.swing.JPanel();
-        jPanel3 = new javax.swing.JPanel();
-        jPanel4 = new javax.swing.JPanel();
+        panneau_grille = new javax.swing.JPanel();
+        panneau_infos_joueurs = new javax.swing.JPanel();
+        panneau_création_partie = new javax.swing.JPanel();
+        panneau_infos_jeu = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        panneau_grille.setBackground(new java.awt.Color(255, 255, 255));
+        panneau_grille.setLayout(new java.awt.GridLayout(6, 7));
+        getContentPane().add(panneau_grille, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 640, 470));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 620, Short.MAX_VALUE)
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 370, Short.MAX_VALUE)
-        );
+        panneau_infos_joueurs.setBackground(new java.awt.Color(204, 255, 204));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, 620, 370));
-
-        jPanel2.setBackground(new java.awt.Color(204, 255, 204));
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout panneau_infos_joueursLayout = new javax.swing.GroupLayout(panneau_infos_joueurs);
+        panneau_infos_joueurs.setLayout(panneau_infos_joueursLayout);
+        panneau_infos_joueursLayout.setHorizontalGroup(
+            panneau_infos_joueursLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 330, Short.MAX_VALUE)
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        panneau_infos_joueursLayout.setVerticalGroup(
+            panneau_infos_joueursLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 110, Short.MAX_VALUE)
         );
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 20, 330, 110));
+        getContentPane().add(panneau_infos_joueurs, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 20, 330, 110));
 
-        jPanel3.setBackground(new java.awt.Color(204, 255, 204));
+        panneau_création_partie.setBackground(new java.awt.Color(204, 255, 204));
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout panneau_création_partieLayout = new javax.swing.GroupLayout(panneau_création_partie);
+        panneau_création_partie.setLayout(panneau_création_partieLayout);
+        panneau_création_partieLayout.setHorizontalGroup(
+            panneau_création_partieLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 330, Short.MAX_VALUE)
         );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        panneau_création_partieLayout.setVerticalGroup(
+            panneau_création_partieLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 140, Short.MAX_VALUE)
         );
 
-        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 350, -1, 140));
+        getContentPane().add(panneau_création_partie, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 350, -1, 140));
 
-        jPanel4.setBackground(new java.awt.Color(204, 255, 204));
+        panneau_infos_jeu.setBackground(new java.awt.Color(204, 255, 204));
 
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout panneau_infos_jeuLayout = new javax.swing.GroupLayout(panneau_infos_jeu);
+        panneau_infos_jeu.setLayout(panneau_infos_jeuLayout);
+        panneau_infos_jeuLayout.setHorizontalGroup(
+            panneau_infos_jeuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 330, Short.MAX_VALUE)
         );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        panneau_infos_jeuLayout.setVerticalGroup(
+            panneau_infos_jeuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 140, Short.MAX_VALUE)
         );
 
-        getContentPane().add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 180, -1, -1));
+        getContentPane().add(panneau_infos_jeu, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 180, -1, -1));
 
         setBounds(0, 0, 1105, 522);
     }// </editor-fold>//GEN-END:initComponents
@@ -133,9 +122,9 @@ public class fenetredejeu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel panneau_création_partie;
+    private javax.swing.JPanel panneau_grille;
+    private javax.swing.JPanel panneau_infos_jeu;
+    private javax.swing.JPanel panneau_infos_joueurs;
     // End of variables declaration//GEN-END:variables
 }
