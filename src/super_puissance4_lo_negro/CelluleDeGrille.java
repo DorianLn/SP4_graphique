@@ -10,7 +10,7 @@ package super_puissance4_lo_negro;
  */
 public class CelluleDeGrille {
     //création des différents attributs qui doivent être présenr dans cette classe
-    private Jetons jetonCourant ; 
+    Jetons jetonCourant ; 
     private boolean AvoirTrouNoir ;
     private boolean avoirDesintegrateur ;
 

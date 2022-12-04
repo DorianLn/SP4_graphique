@@ -234,7 +234,7 @@ public class PlateauDeJeu {
     }
     
     
-    public boolean colonneRemplie(int C){
+    public boolean colonneRemplie(int C){//à corriger pas completer car si désintégrateur ou trounoir != null
         if(grille[0][C]!=null){//si la derniere colonne n'est pas egal à null alors la colonne est remplie 
             return true;
         }else{

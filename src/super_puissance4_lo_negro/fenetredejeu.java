@@ -11,32 +11,46 @@ import java.util.Scanner;
  * @author doria
  */
 public class fenetredejeu extends javax.swing.JFrame {
-    
-    private Joueur[] listeJoueurs=new Joueur[2];// on créer les attributs demandés
-    private Joueur joueurCourant =listeJoueurs[0];
-    private PlateauDeJeu plateau = new PlateauDeJeu();
-    
 
-    
+    private Joueur[] listeJoueurs = new Joueur[2];// on créer les attributs demandés
+    private Joueur joueurCourant ;
+    private PlateauDeJeu plateau = new PlateauDeJeu();
+
     /**
      * Creates new form fenetredejeu
      */
     public fenetredejeu() {
         initComponents();
         panneau_infos_joueurs.setVisible(false);  //on cache le panneau_infos_joueurs
-        
+
         panneau_infos_jeu.setVisible(false);      //idem pour le panneau_infos_jeu
-        
-        for(int i=5; i>=0; i--){
-            for(int j=0;j<7; j++){
+
+        for (int i = 5; i >= 0; i--) {
+            for (int j = 0; j < 7; j++) {
                 Cellule_graphique cellGraph = new Cellule_graphique(plateau.grille[i][j]);
+
+                cellGraph.addActionListener(new java.awt.event.ActionListener() {
+                    public void actionPerformed(java.awt.event.ActionEvent evt) {
+                        CelluleDeGrille c = cellGraph.celluleAssociée;
+                        if(c.jetonCourant== null){
+                            return;
+                        }
+                        if(c.jetonCourant.getCouleur().equals(joueurCourant.getCouleurJ())){
+                            textemessage.setText("le joueur" + joueurCourant.Nom() +" récupère un de ses jetons ");
+                        }else{
+                            textemessage.setText("le joueur" + joueurCourant.Nom() +" veut desintégrer un jeton  ");
+                        }
+                        
+                        
+                    }
+                });
+
                 panneau_grille.add(cellGraph);
-                
+
             }
-            
+
         }
-      
-        
+
     }
 
     /**
@@ -191,7 +205,7 @@ public class fenetredejeu extends javax.swing.JFrame {
                 btn_col_6ActionPerformed(evt);
             }
         });
-        getContentPane().add(btn_col_6, new org.netbeans.lib.awtextra.AbsoluteConstraints(606, 10, -1, -1));
+        getContentPane().add(btn_col_6, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 10, -1, -1));
 
         btn_col_0.setText("1");
         btn_col_0.addActionListener(new java.awt.event.ActionListener() {
@@ -251,139 +265,135 @@ public class fenetredejeu extends javax.swing.JFrame {
     private void btn_partActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_partActionPerformed
         // TODO add your handling code here:
         //c'est ici que l'on peut écrire le code lié au bouton 
-        
+
         panneau_infos_joueurs.setVisible(true);  //on affiche le panneau_infos_joueurs si le joueur clique sur bouton
-        
+
         panneau_infos_jeu.setVisible(true);      //idem pour le panneau_infos_jeu
-        
+
         initialiserPartie();
         panneau_grille.repaint();//méthode de rafraîchissement de l'affichage
         btn_part.setEnabled(false);
-        
-        
-        
-        
-        
-        
+
+
     }//GEN-LAST:event_btn_partActionPerformed
 
     private void btn_col_0ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_col_0ActionPerformed
         // TODO add your handling code here:
         joueur_suivant();
-        if(plateau.colonneRemplie(0)==true){
+        if (plateau.colonneRemplie(0) == true) {
             btn_col_0.setEnabled(false);
         }
         jouerDansColonne(0);
-        
+
     }//GEN-LAST:event_btn_col_0ActionPerformed
 
     private void btn_col_1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_col_1ActionPerformed
         // TODO add your handling code here:
-         jouerDansColonne(1);
-         if(plateau.colonneRemplie(1)==true){
+        jouerDansColonne(1);
+        if (plateau.colonneRemplie(1) == true) {
             btn_col_1.setEnabled(false);
         }
-        
+
         joueur_suivant();
     }//GEN-LAST:event_btn_col_1ActionPerformed
 
     private void btn_col_2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_col_2ActionPerformed
         // TODO add your handling code here:
         jouerDansColonne(2);
-        if(plateau.colonneRemplie(2)==true){
+        if (plateau.colonneRemplie(2) == true) {
             btn_col_2.setEnabled(false);
         }
-        
+
         joueur_suivant();
     }//GEN-LAST:event_btn_col_2ActionPerformed
 
     private void btn_col_3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_col_3ActionPerformed
         // TODO add your handling code here:
         jouerDansColonne(3);
-        if(plateau.colonneRemplie(3)==true){
+        if (plateau.colonneRemplie(3) == true) {
             btn_col_3.setEnabled(false);
         }
-        
+
         joueur_suivant();
     }//GEN-LAST:event_btn_col_3ActionPerformed
 
     private void btn_col_4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_col_4ActionPerformed
         // TODO add your handling code here:
         jouerDansColonne(4);
-        if(plateau.colonneRemplie(4)==true){
+        if (plateau.colonneRemplie(4) == true) {
             btn_col_4.setEnabled(false);
         }
-        
+
         joueur_suivant();
     }//GEN-LAST:event_btn_col_4ActionPerformed
 
     private void btn_col_5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_col_5ActionPerformed
         // TODO add your handling code here:
         jouerDansColonne(5);
-        if(plateau.colonneRemplie(5)==true){
+        if (plateau.colonneRemplie(5) == true) {
             btn_col_5.setEnabled(false);
         }
-       
+
         joueur_suivant();
     }//GEN-LAST:event_btn_col_5ActionPerformed
 
     private void btn_col_6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_col_6ActionPerformed
         // TODO add your handling code here:
         jouerDansColonne(6);
-        joueur_suivant();if(plateau.colonneRemplie(6)==true){
+        joueur_suivant();
+        if (plateau.colonneRemplie(6) == true) {
             btn_col_6.setEnabled(false);
         }
-        
-        
+
         joueur_suivant();
     }//GEN-LAST:event_btn_col_6ActionPerformed
-    public boolean jouerDansColonne(int indice_colonne){
-        
+    public boolean jouerDansColonne(int indice_colonne) {
+
         int resultatAction;
+        //Partie du code qi ne marche pas car le tableau reservejeton des joueurs est considéré comme vide 
         resultatAction = plateau.AjouterJetonDansColonnes(joueurCourant.jouerJeton(), indice_colonne);
         panneau_grille.repaint();
-        
-        lbl_J1_desint.setText(listeJoueurs[0].getNombreDesintegrateurs()+"");
-        lbl_J2_desint1.setText(listeJoueurs[1].getNombreDesintegrateurs()+"");
-        
-        
-        // partie du code pour dire qui a gagné :
+
+        lbl_J1_desint.setText(listeJoueurs[0].getNombreDesintegrateurs() + "");
+        lbl_J2_desint1.setText(listeJoueurs[1].getNombreDesintegrateurs() + "");
+
         boolean vict_j1 = plateau.GagnantePourCouleur(listeJoueurs[0].getCouleurJ());
         boolean vict_j2 = plateau.GagnantePourCouleur(listeJoueurs[1].getCouleurJ());
-        
-        if(vict_j1 && ! vict_j2){
+
+        // partie du code pour dire qui a gagné :
+        if (vict_j1 && !vict_j2) {
             textemessage.setText("Victoire de : " + listeJoueurs[0].Nom());
         }
-        if(vict_j2 && ! vict_j2){
+        if (vict_j2 && !vict_j2) {
             textemessage.setText("Victoire de : " + listeJoueurs[1].Nom());
         }
-        
-        if(vict_j1 && ! vict_j2){
-            if(joueurCourant == listeJoueurs[0]){
+
+        if (vict_j1 && vict_j2) {
+            if (joueurCourant == listeJoueurs[0]) {
                 textemessage.setText("Victoire de : " + listeJoueurs[1].Nom());
-            }else{
+            } else {
                 textemessage.setText("Victoire de : " + listeJoueurs[2].Nom());
             }
         }
-        
-        if(resultatAction == 0 ){
+
+        if (resultatAction == 0) {
             return false;
-        }else{
+        } else {
             return true;
         }
-        
+
     }
-    public void joueur_suivant(){  //méthode qui ne sert qu'à alterner la variable joueurCourant entre les deux joueurs
-        if(joueurCourant == listeJoueurs[0]){
+
+    public void joueur_suivant() {  //méthode qui ne sert qu'à alterner la variable joueurCourant entre les deux joueurs
+        if (joueurCourant == listeJoueurs[0]) {
             joueurCourant = listeJoueurs[1];
-        }else{
+        } else {
             joueurCourant = listeJoueurs[0];
-            
+
         }
         lbl_Jcourant.setText(joueurCourant.Nom());
     }
-    
-    
+
     /**
      * @param args the command line arguments
      */
@@ -418,120 +428,115 @@ public class fenetredejeu extends javax.swing.JFrame {
             }
         });
     }
-    
-    public void attribuerCouleurAuxJoueurs(){//méthode qui affecte une couleur aux joueurs aléatoirement 
-        
-        
-        
-        int valeur=(int) (Math.random() * (2));
-        if (valeur==0){
+
+    public void attribuerCouleurAuxJoueurs() {//méthode qui affecte une couleur aux joueurs aléatoirement 
+
+        int valeur = (int) (Math.random() * (2));
+        if (valeur == 0) {
             listeJoueurs[0].affecterCouleur("Rouge");//on affecte la couleur aux joueurs avec la méthode affecter joueur
             listeJoueurs[1].affecterCouleur("Jaune");
-        }
-        else{
+        } else {
             listeJoueurs[0].affecterCouleur("Jaune");
             listeJoueurs[1].affecterCouleur("Rouge");
         }
     }
-    public void creerEtAffecterJeton(Joueur J1){//méthode qui créer 30 jetons et qui va les insérer dans le tableau de reserve du joueur 
 
-        if ("rouge".equals(J1.getCouleurJ())){  // si la couleur rouge est égal à la coueur du joueur 1
-            for (int i=0;i<31;i++){//alors on créer une boucle pour remplir la reserve du joueur de jeton rouge
-                Jetons jeton=new Jetons ("Rouge");
+    public void creerEtAffecterJeton(Joueur J1) {//méthode qui créer 30 jetons et qui va les insérer dans le tableau de reserve du joueur 
+
+        if ("rouge".equals(J1.getCouleurJ())) {  // si la couleur rouge est égal à la coueur du joueur 1
+            for (int i = 0; i < 31; i++) {//alors on créer une boucle pour remplir la reserve du joueur de jeton rouge
+                Jetons jeton = new Jetons("Rouge");
                 J1.ajouterJeton(jeton);
 
-            }         
+            }
         }
 
-        if ("Jaune".equals(J1.getCouleurJ())){//même chose pour la couleur jaune 
+        if ("Jaune".equals(J1.getCouleurJ())) {//même chose pour la couleur jaune 
 
-            for (int i=0;i<31;i++){
-                Jetons jeton=new Jetons ("Jaune");
+            for (int i = 0; i < 31; i++) {
+                Jetons jeton = new Jetons("Jaune");
                 J1.ajouterJeton(jeton);
             }
         }
     }
 
-    public void placerTrousNoirsEtDesintegrateurs(){//méthode qui place les trous noir et les desintégrateurs comme demandé
+    public void placerTrousNoirsEtDesintegrateurs() {//méthode qui place les trous noir et les desintégrateurs comme demandé
 
-        int i=0;
-        while (i<2){ //on place 2 desintégrateur et 2 trous noir comme demandé si il n'y a pas déjà des des trous noir ou désintégrateurs 
-            int x=(int) (Math.random() * (9-3));
-            int y=(int) (Math.random() * (8-3));
-            if (plateau.presenceDesintegrateur(x,y)==false){
-                if (plateau.presenceTrouNoir(x,y)==false){
-                    plateau.placerTrouNoir(x,y);
-                    plateau.placerDesintegrateur(x,y);
-                    i+=1;
-
-                }
-            }              
-        }
-
-        while (i<5){ //  On place trois  trous noir 
-
-            int x=(int) (Math.random() * (9-3));
-
-            int y=(int) (Math.random() * (8-3));
-
-            if (plateau.presenceDesintegrateur(x,y)==false){
-
-                if (plateau.presenceTrouNoir(x,y)==false){
-
-                    plateau.placerTrouNoir(x,y);                  
-                    i+=1;
+        int i = 0;
+        while (i < 2) { //on place 2 desintégrateur et 2 trous noir comme demandé si il n'y a pas déjà des des trous noir ou désintégrateurs 
+            int x = (int) (Math.random() * (9 - 3));
+            int y = (int) (Math.random() * (8 - 3));
+            if (plateau.presenceDesintegrateur(x, y) == false) {
+                if (plateau.presenceTrouNoir(x, y) == false) {
+                    plateau.placerTrouNoir(x, y);
+                    plateau.placerDesintegrateur(x, y);
+                    i += 1;
 
                 }
             }
         }
 
-        while(i<8){//on place trois desintégrateur
+        while (i < 5) { //  On place trois  trous noir 
 
-            int x=(int) (Math.random() * (9-3));
-            int y=(int) (Math.random() * (8-3));
-            if (plateau.presenceDesintegrateur(x,y)==false){
-                if (plateau.presenceTrouNoir(x,y)==false){
-                    plateau.placerDesintegrateur(x,y);
-                    i+=1;
+            int x = (int) (Math.random() * (9 - 3));
+
+            int y = (int) (Math.random() * (8 - 3));
+
+            if (plateau.presenceDesintegrateur(x, y) == false) {
+
+                if (plateau.presenceTrouNoir(x, y) == false) {
+
+                    plateau.placerTrouNoir(x, y);
+                    i += 1;
+
+                }
+            }
+        }
+
+        while (i < 8) {//on place trois desintégrateur
+
+            int x = (int) (Math.random() * (9 - 3));
+            int y = (int) (Math.random() * (8 - 3));
+            if (plateau.presenceDesintegrateur(x, y) == false) {
+                if (plateau.presenceTrouNoir(x, y) == false) {
+                    plateau.placerDesintegrateur(x, y);
+                    i += 1;
                 }
 
             }
 
         }
 
-    }        
+    }
 
-    
-    public void initialiserPartie(){//méthode qui initialise une partie 
-        
-        String nomJ1 =Nom_Joueur1.getText();//on met le nom rentrer du joueur1 dans une variable
-        String nomJ2 =Nom_Joueur2.getText();
-        Joueur J1= new Joueur(nomJ1);//on créer une variable J1 de type Joueur
+    public void initialiserPartie() {//méthode qui initialise une partie 
+
+        String nomJ1 = Nom_Joueur1.getText();//on met le nom rentrer du joueur1 dans une variable
+        String nomJ2 = Nom_Joueur2.getText();
+        Joueur J1 = new Joueur(nomJ1);//on créer une variable J1 de type Joueur
         Joueur J2 = new Joueur(nomJ2);
-       
-        listeJoueurs[0]=J1;
-        listeJoueurs[1]=J2;
-        
-        
-        
-        attribuerCouleurAuxJoueurs();  
+
+        listeJoueurs[0] = J1;
+        listeJoueurs[1] = J2;
+
+        attribuerCouleurAuxJoueurs();
         plateau.viderGrille(J1, J2);
         //ici on met juste à jour l'affichage des infos des joueurs
         lbl_J1_nom.setText(nomJ1);
         lbl_J2_nom2.setText(nomJ2);
         lbl_J1_couleur.setText(J1.getCouleurJ());
         lbl_J2_couleur1.setText(J2.getCouleurJ());
-        lbl_J1_desint.setText(J1.getNombreDesintegrateurs()+"");
-        lbl_J2_desint1.setText(J2.getNombreDesintegrateurs()+"");
-        
+        lbl_J1_desint.setText(J1.getNombreDesintegrateurs() + "");
+        lbl_J2_desint1.setText(J2.getNombreDesintegrateurs() + "");
+
         System.out.println(nomJ1 + J1.getCouleurJ());
-        
+
         creerEtAffecterJeton(listeJoueurs[1]);
         creerEtAffecterJeton(listeJoueurs[0]);
-        joueurCourant= listeJoueurs[0];
+        joueurCourant = listeJoueurs[0];
         placerTrousNoirsEtDesintegrateurs();
-        lbl_Jcourant.setText(J1.Nom()); 
-        
+        lbl_Jcourant.setText(J1.Nom());
+
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
