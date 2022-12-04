@@ -221,7 +221,7 @@ public class fenetredejeu extends javax.swing.JFrame {
         
         initialiserPartie();
         panneau_grille.repaint();//méthode de rafraîchissement de l'affichage
-        
+        btn_part.setEnabled(false);
         
         
         
@@ -359,12 +359,21 @@ public class fenetredejeu extends javax.swing.JFrame {
         listeJoueurs[1]=J2;
         
         
-        attribuerCouleurAuxJoueurs();   
+        attribuerCouleurAuxJoueurs();  
+        
+        //ici on met juste à jour l'affichage des infos des joueurs
+        lbl_J1_nom.setText(nomJ1);
+        lbl_J2_nom2.setText(nomJ2);
+        lbl_J1_couleur.setText(J1.getCouleurJ());
+        lbl_J2_couleur1.setText(J2.getCouleurJ());
+        lbl_J1_desint.setText(J1.getNombreDesintegrateurs()+"");
+        lbl_J2_desint1.setText(J2.getNombreDesintegrateurs()+"");
+        
         System.out.println(nomJ1 + J1.getCouleurJ());
         creerEtAffecterJeton(listeJoueurs[1]);
         creerEtAffecterJeton(listeJoueurs[0]);
         placerTrousNoirsEtDesintegrateurs();
-    
+        // lbl_Jcourant.setText(nomJ1) si n%2=0
         
     }
 
