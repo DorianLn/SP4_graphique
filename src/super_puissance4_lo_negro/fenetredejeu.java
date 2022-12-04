@@ -220,6 +220,7 @@ public class fenetredejeu extends javax.swing.JFrame {
         panneau_infos_jeu.setVisible(true);      //idem pour le panneau_infos_jeu
         
         initialiserPartie();
+        panneau_grille.repaint();//méthode de rafraîchissement de l'affichage
         
         
         
@@ -300,7 +301,7 @@ public class fenetredejeu extends javax.swing.JFrame {
     public void placerTrousNoirsEtDesintegrateurs(){//méthode qui place les trous noir et les desintégrateurs comme demandé
 
         int i=0;
-        while (i<3){ //on place 2 desintégrateur et 2 trous noir comme demandé si il n'y a pas déjà des des trous noir ou désintégrateurs 
+        while (i<2){ //on place 2 desintégrateur et 2 trous noir comme demandé si il n'y a pas déjà des des trous noir ou désintégrateurs 
             int x=(int) (Math.random() * (9-3));
             int y=(int) (Math.random() * (8-3));
             if (plateau.presenceDesintegrateur(x,y)==false){
@@ -330,7 +331,7 @@ public class fenetredejeu extends javax.swing.JFrame {
             }
         }
 
-        while(i<7){//on place trois desintégrateur
+        while(i<8){//on place trois desintégrateur
 
             int x=(int) (Math.random() * (9-3));
             int y=(int) (Math.random() * (8-3));

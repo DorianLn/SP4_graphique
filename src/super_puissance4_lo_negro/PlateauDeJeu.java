@@ -271,6 +271,10 @@ public class PlateauDeJeu {
                     }else{
                         J2.ajouterJeton(jeton);
                     }
+                }if(grille[i][j].presenceTrouNoir()==true){
+                    grille[i][j].supprimerTrouNoir();
+                }if(grille[i][j].presenceDesintegrateur()){
+                    grille[i][j].supprimerDesintegrateur();
                 }
                 
             }
