@@ -219,7 +219,7 @@ public class fenetredejeu extends javax.swing.JFrame {
         
         panneau_infos_jeu.setVisible(true);      //idem pour le panneau_infos_jeu
         
-        
+        initialiserPartie();
         
         
         
@@ -265,10 +265,12 @@ public class fenetredejeu extends javax.swing.JFrame {
     }
     
     public void attribuerCouleurAuxJoueurs(){//méthode qui affecte une couleur aux joueurs aléatoirement 
-
+        
+        
+        
         int valeur=(int) (Math.random() * (2));
         if (valeur==0){
-            listeJoueurs[0].affecterCouleur("rouge");//on affecte la couleur aux jouers avec la méthode affecter joueur
+            listeJoueurs[0].affecterCouleur("rouge");//on affecte la couleur aux joueurs avec la méthode affecter joueur
             listeJoueurs[1].affecterCouleur("jaune");
         }
         else{
@@ -346,13 +348,18 @@ public class fenetredejeu extends javax.swing.JFrame {
 
     
     public void initialiserPartie(){//méthode qui initialise une partie 
-        String nomJ1 =Nom_Joueur1.getText();
-        String nomJ2 =Nom_Joueur2.getText();
-        Joueur J1= new Joueur(nomJ1);
-        Joueur J2 = new Joueur(nomJ2);
         
+        String nomJ1 =Nom_Joueur1.getText();//on met le nom rentrer du joueur1 dans une variable
+        String nomJ2 =Nom_Joueur2.getText();
+        Joueur J1= new Joueur(nomJ1);//on créer une variable J1 de type Joueur
+        Joueur J2 = new Joueur(nomJ2);
         plateau.viderGrille(J1, J2);
-        attribuerCouleurAuxJoueurs();
+        listeJoueurs[0]=J1;
+        listeJoueurs[1]=J2;
+        
+        
+        attribuerCouleurAuxJoueurs();   
+        System.out.println(nomJ1 + J1.getCouleurJ());
         creerEtAffecterJeton(listeJoueurs[1]);
         creerEtAffecterJeton(listeJoueurs[0]);
         placerTrousNoirsEtDesintegrateurs();
