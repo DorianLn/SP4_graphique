@@ -1,4 +1,3 @@
-
 package super_puissance4_lo_negro;
 
 import java.util.Scanner;
@@ -10,7 +9,7 @@ import java.util.Scanner;
 public class fenetredejeu extends javax.swing.JFrame {
 
     private Joueur[] listeJoueurs = new Joueur[2];// on créer les attributs demandés
-    private Joueur joueurCourant ;
+    private Joueur joueurCourant;
     private PlateauDeJeu plateau = new PlateauDeJeu();
 
     /**
@@ -29,29 +28,50 @@ public class fenetredejeu extends javax.swing.JFrame {
                 cellGraph.addActionListener(new java.awt.event.ActionListener() {
                     public void actionPerformed(java.awt.event.ActionEvent evt) {
                         CelluleDeGrille c = cellGraph.celluleAssociée;
-                        if(c.jetonCourant== null){
+                        if (c.jetonCourant == null) {
                             return;
                         }
-                        if(c.jetonCourant.getCouleur().equals(joueurCourant.getCouleurJ())){
-                            
-                            textemessage.setText("le joueur" + joueurCourant.Nom() +" récupère un de ses jetons ");
+                        if (c.jetonCourant.getCouleur().equals(joueurCourant.getCouleurJ())) {//si l'on clique sur un bouton 
+
+                            textemessage.setText("le joueur" + joueurCourant.Nom() + " récupère un de ses jetons ");//soit on récupère le jeton 
                             Jetons jrecup = c.recupererJeton();
                             joueurCourant.ajouterJeton(jrecup);
                             joueur_suivant();
-                        }else{
-                            if(joueurCourant.getNombreDesintegrateurs()>0){
-                                textemessage.setText("le joueur" + joueurCourant.Nom() +" desintégre un jeton  ");  
+                        } else {//soit on le desintègre
+                            if (joueurCourant.getNombreDesintegrateurs() > 0) {
+                                textemessage.setText("le joueur" + joueurCourant.Nom() + " desintégre un jeton  ");
                                 c.supprimerJeton();
                                 joueurCourant.utiliserDesintegrateur();
                                 joueur_suivant();
-                            }
-                            else{
+                            } else {
                                 return;
-                            }
+                            }//puis on tasse la grille
                             plateau.tassergrille();
+                            panneau_grille.repaint();
+                            lbl_J1_desint.setText(listeJoueurs[0].getNombreDesintegrateurs() + "");//on met à jour le nombre de désintéfrateurs
+                            lbl_J2_desint1.setText(listeJoueurs[1].getNombreDesintegrateurs() + "");
+
+                            boolean vict_j1 = plateau.GagnantePourCouleur(listeJoueurs[0].getCouleurJ());
+                            boolean vict_j2 = plateau.GagnantePourCouleur(listeJoueurs[1].getCouleurJ());
+
+                           
+                            if (vict_j1 && !vict_j2) {//et on test à nouveau les conditions dde victoire
+                                textemessage.setText("Victoire de : " + listeJoueurs[0].Nom());
+                            }
+                            if (vict_j2 && !vict_j2) {
+                                textemessage.setText("Victoire de : " + listeJoueurs[1].Nom());
+                            }
+
+                            if (vict_j1 && vict_j2) {
+                                if (joueurCourant == listeJoueurs[0]) {
+                                    textemessage.setText("Victoire de : " + listeJoueurs[1].Nom());
+                                } else {
+                                    textemessage.setText("Victoire de : " + listeJoueurs[2].Nom());
+                                }
+                            }
+
                         }
-                        
-                        
+
                     }
                 });
 
