@@ -39,26 +39,18 @@ public class PlateauDeJeu {
     }
     
     public boolean grilleRemplie(){// on créer une méthode permettant de renvoyer false si la grille n'est pas pleine ou true si elle est pleine 
-        int a=0;
         for (int i=0; i<6 ; i++){
                for(int j=0 ; i<7 ; i++){
                   if( grille[i][j]==null){
-                      a=1;
                       break;
                   }
-                  
+                  break;
                    
                    
                }
-               break;
-               
+               return false;
            }
-        if(a==1){
-            return false;
-        }else{
-            return true;
-        }
-        
+        return true;
     }
     
     
@@ -234,7 +226,7 @@ public class PlateauDeJeu {
     }
     
     
-    public boolean colonneRemplie(int C){//à corriger pas completer car si désintégrateur ou trounoir != null
+    public boolean colonneRemplie(int C){
         if(grille[0][C]!=null){//si la derniere colonne n'est pas egal à null alors la colonne est remplie 
             return true;
         }else{
@@ -279,7 +271,8 @@ public class PlateauDeJeu {
                     }else{
                         J2.ajouterJeton(jeton);
                     }
-                }if(grille[i][j].presenceTrouNoir()==true){
+                }
+                if(grille[i][j].presenceTrouNoir()==true){
                     grille[i][j].supprimerTrouNoir();
                 }if(grille[i][j].presenceDesintegrateur()){
                     grille[i][j].supprimerDesintegrateur();

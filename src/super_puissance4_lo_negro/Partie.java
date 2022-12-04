@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package super_puissance4_lo_negro;
 
 import java.util.Scanner;
@@ -136,6 +133,11 @@ public class Partie {
         
     }
 
+
+
+
+
+   
    
 
     public void lancerPartie(){//méthode qui lance une partie 
@@ -143,7 +145,7 @@ public class Partie {
         
         int n=0;
         joueurCourant = listeJoueurs[0];
-        plateau.afficherGrilleSurConsole();
+        
         while(plateau.GagnantePourCouleur(joueurCourant.getCouleurJ()) == false){
             
             
@@ -160,14 +162,12 @@ public class Partie {
                     Scanner colonne = new Scanner (System.in);
 
                     while (cln>7){
-                        
+
                         System.out.println("Placer le jeton dans la colonne désirée");
 
                         cln = colonne.nextInt();
-                        if(plateau.AjouterJetonDansColonnes(joueurCourant.jouerJeton(), cln-1)== 0){//si c'est egal à 0 alors il n'y a plus de place dans la la colonne
-                            System.out.println("Choisissez une autre colonne celle-ci est pleine");
-                            cln =10;
-                        }
+
+
                     }
                     plateau.AjouterJetonDansColonnes(joueurCourant.jouerJeton(), cln-1);
                     n +=1;

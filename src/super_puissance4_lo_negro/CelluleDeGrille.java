@@ -10,6 +10,7 @@ package super_puissance4_lo_negro;
  */
 public class CelluleDeGrille {
     //création des différents attributs qui doivent être présenr dans cette classe
+
     Jetons jetonCourant ; 
     private boolean AvoirTrouNoir ;
     private boolean avoirDesintegrateur ;
@@ -95,8 +96,11 @@ public class CelluleDeGrille {
         
     }
 
+
     @Override
     public String toString() {
+        
+
         if(presenceJeton()==true){
             return jetonCourant.getCouleur();
         }

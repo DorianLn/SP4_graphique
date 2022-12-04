@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package super_puissance4_lo_negro;
 
 import java.util.ArrayList;
@@ -15,6 +12,7 @@ public class Joueur {
     private String couleur;
     private ArrayList<Jetons> reserveJetons = new ArrayList<Jetons>();
     private int nombreDesintegrateurs;
+
 
     public Joueur(String nom) {    //Constructeur de la classe Joueur
         this.nom = nom;
@@ -62,4 +60,6 @@ public class Joueur {
     public String Nom(){
         return nom;
     }
-}
+
+        
+}    
