@@ -39,18 +39,26 @@ public class PlateauDeJeu {
     }
     
     public boolean grilleRemplie(){// on créer une méthode permettant de renvoyer false si la grille n'est pas pleine ou true si elle est pleine 
+        int a=0;
         for (int i=0; i<6 ; i++){
                for(int j=0 ; i<7 ; i++){
                   if( grille[i][j]==null){
+                      a=1;
                       break;
                   }
-                  break;
+                  
                    
                    
                }
-               return false;
+               break;
+               
            }
-        return true;
+        if(a==1){
+            return false;
+        }else{
+            return true;
+        }
+        
     }
     
     

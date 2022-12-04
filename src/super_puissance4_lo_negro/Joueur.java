@@ -34,10 +34,14 @@ public class Joueur {
         reserveJetons.add(nouveauJeton);
     }
    
-   
+    public Jetons Jetonres(){
+       return reserveJetons.get(0);
+    }
+    
     public Jetons jouerJeton(){    //méthode permettant de retirer un jeton de la réserve du joueur et de renvoyer une référence vers le jeton retiré
        
-        Jetons j = reserveJetons.remove(0);
+        Jetons j =Jetonres();
+        reserveJetons.remove(0);
         return j;
      
     }

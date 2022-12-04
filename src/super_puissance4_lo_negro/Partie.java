@@ -53,18 +53,18 @@ public class Partie {
 
     public void creerEtAffecterJeton(Joueur J1){//méthode qui créer 30 jetons et qui va les insérer dans le tableau de reserve du joueur 
 
-        if ("rouge".equals(J1.getCouleurJ())){  // si la couleur rouge est égal à la coueur du joueur 1
+        if ("Rouge".equals(J1.getCouleurJ())){  // si la couleur rouge est égal à la coueur du joueur 1
             for (int i=0;i<31;i++){//alors on créer une boucle pour remplir la reserve du joueur de jeton rouge
-                Jetons jeton=new Jetons ("rouge");
+                Jetons jeton=new Jetons ("Rouge");
                 J1.ajouterJeton(jeton);
 
             }         
         }
 
-        if ("jaune".equals(J1.getCouleurJ())){//même chose pour la couleur jaune 
+        if ("Jaune".equals(J1.getCouleurJ())){//même chose pour la couleur jaune 
 
             for (int i=0;i<31;i++){
-                Jetons jeton=new Jetons ("jaune");
+                Jetons jeton=new Jetons ("Jaune");
                 J1.ajouterJeton(jeton);
             }
         }
@@ -160,11 +160,14 @@ public class Partie {
                     Scanner colonne = new Scanner (System.in);
 
                     while (cln>7){
-
+                        
                         System.out.println("Placer le jeton dans la colonne désirée");
 
                         cln = colonne.nextInt();
-
+                        if(plateau.AjouterJetonDansColonnes(joueurCourant.jouerJeton(), cln-1)== 0){//si c'est egal à 0 alors il n'y a plus de place dans la la colonne
+                            System.out.println("Choisissez une autre colonne celle-ci est pleine");
+                            cln =10;
+                        }
                     }
                     plateau.AjouterJetonDansColonnes(joueurCourant.jouerJeton(), cln-1);
                     n +=1;

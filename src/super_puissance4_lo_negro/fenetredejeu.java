@@ -4,6 +4,8 @@
  */
 package super_puissance4_lo_negro;
 
+import java.util.Scanner;
+
 /**
  *
  * @author doria
@@ -11,7 +13,7 @@ package super_puissance4_lo_negro;
 public class fenetredejeu extends javax.swing.JFrame {
     
     private Joueur[] listeJoueurs=new Joueur[2];// on créer les attributs demandés
-    private Joueur joueurCourant;
+    private Joueur joueurCourant =listeJoueurs[0];
     private PlateauDeJeu plateau = new PlateauDeJeu();
     
 
@@ -268,38 +270,85 @@ public class fenetredejeu extends javax.swing.JFrame {
     private void btn_col_0ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_col_0ActionPerformed
         // TODO add your handling code here:
         joueur_suivant();
+        if(plateau.colonneRemplie(0)==true){
+            btn_col_0.setEnabled(false);
+        }
+        jouerDansColonne(0);
+        
     }//GEN-LAST:event_btn_col_0ActionPerformed
 
     private void btn_col_1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_col_1ActionPerformed
         // TODO add your handling code here:
+         jouerDansColonne(1);
+         if(plateau.colonneRemplie(1)==true){
+            btn_col_1.setEnabled(false);
+        }
+        
         joueur_suivant();
     }//GEN-LAST:event_btn_col_1ActionPerformed
 
     private void btn_col_2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_col_2ActionPerformed
         // TODO add your handling code here:
+        jouerDansColonne(2);
+        if(plateau.colonneRemplie(2)==true){
+            btn_col_2.setEnabled(false);
+        }
+        
         joueur_suivant();
     }//GEN-LAST:event_btn_col_2ActionPerformed
 
     private void btn_col_3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_col_3ActionPerformed
         // TODO add your handling code here:
+        jouerDansColonne(3);
+        if(plateau.colonneRemplie(3)==true){
+            btn_col_3.setEnabled(false);
+        }
+        
         joueur_suivant();
     }//GEN-LAST:event_btn_col_3ActionPerformed
 
     private void btn_col_4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_col_4ActionPerformed
         // TODO add your handling code here:
+        jouerDansColonne(4);
+        if(plateau.colonneRemplie(4)==true){
+            btn_col_4.setEnabled(false);
+        }
+        
         joueur_suivant();
     }//GEN-LAST:event_btn_col_4ActionPerformed
 
     private void btn_col_5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_col_5ActionPerformed
         // TODO add your handling code here:
+        jouerDansColonne(5);
+        if(plateau.colonneRemplie(5)==true){
+            btn_col_5.setEnabled(false);
+        }
+       
         joueur_suivant();
     }//GEN-LAST:event_btn_col_5ActionPerformed
 
     private void btn_col_6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_col_6ActionPerformed
         // TODO add your handling code here:
+        jouerDansColonne(6);
+        joueur_suivant();if(plateau.colonneRemplie(6)==true){
+            btn_col_6.setEnabled(false);
+        }
+        
+        
         joueur_suivant();
     }//GEN-LAST:event_btn_col_6ActionPerformed
-
+    public boolean jouerDansColonne(int indice_colonne){
+        
+        int resultatAction;
+        resultatAction = plateau.AjouterJetonDansColonnes(joueurCourant.jouerJeton(), indice_colonne);
+        panneau_grille.repaint();
+        if(resultatAction == 0 ){
+            return false;
+        }else{
+            return true;
+        }
+        
+    }
     public void joueur_suivant(){  //méthode qui ne sert qu'à alterner la variable joueurCourant entre les deux joueurs
         if(joueurCourant == listeJoueurs[0]){
             joueurCourant = listeJoueurs[1];
@@ -352,28 +401,28 @@ public class fenetredejeu extends javax.swing.JFrame {
         
         int valeur=(int) (Math.random() * (2));
         if (valeur==0){
-            listeJoueurs[0].affecterCouleur("rouge");//on affecte la couleur aux joueurs avec la méthode affecter joueur
-            listeJoueurs[1].affecterCouleur("jaune");
+            listeJoueurs[0].affecterCouleur("Rouge");//on affecte la couleur aux joueurs avec la méthode affecter joueur
+            listeJoueurs[1].affecterCouleur("Jaune");
         }
         else{
-            listeJoueurs[0].affecterCouleur("jaune");
-            listeJoueurs[1].affecterCouleur("rouge");
+            listeJoueurs[0].affecterCouleur("Jaune");
+            listeJoueurs[1].affecterCouleur("Rouge");
         }
     }
     public void creerEtAffecterJeton(Joueur J1){//méthode qui créer 30 jetons et qui va les insérer dans le tableau de reserve du joueur 
 
         if ("rouge".equals(J1.getCouleurJ())){  // si la couleur rouge est égal à la coueur du joueur 1
             for (int i=0;i<31;i++){//alors on créer une boucle pour remplir la reserve du joueur de jeton rouge
-                Jetons jeton=new Jetons ("rouge");
+                Jetons jeton=new Jetons ("Rouge");
                 J1.ajouterJeton(jeton);
 
             }         
         }
 
-        if ("jaune".equals(J1.getCouleurJ())){//même chose pour la couleur jaune 
+        if ("Jaune".equals(J1.getCouleurJ())){//même chose pour la couleur jaune 
 
             for (int i=0;i<31;i++){
-                Jetons jeton=new Jetons ("jaune");
+                Jetons jeton=new Jetons ("Jaune");
                 J1.ajouterJeton(jeton);
             }
         }
@@ -435,13 +484,14 @@ public class fenetredejeu extends javax.swing.JFrame {
         String nomJ2 =Nom_Joueur2.getText();
         Joueur J1= new Joueur(nomJ1);//on créer une variable J1 de type Joueur
         Joueur J2 = new Joueur(nomJ2);
-        plateau.viderGrille(J1, J2);
+       
         listeJoueurs[0]=J1;
         listeJoueurs[1]=J2;
         
         
-        attribuerCouleurAuxJoueurs();  
         
+        attribuerCouleurAuxJoueurs();  
+        plateau.viderGrille(J1, J2);
         //ici on met juste à jour l'affichage des infos des joueurs
         lbl_J1_nom.setText(nomJ1);
         lbl_J2_nom2.setText(nomJ2);
@@ -451,8 +501,10 @@ public class fenetredejeu extends javax.swing.JFrame {
         lbl_J2_desint1.setText(J2.getNombreDesintegrateurs()+"");
         
         System.out.println(nomJ1 + J1.getCouleurJ());
+        
         creerEtAffecterJeton(listeJoueurs[1]);
         creerEtAffecterJeton(listeJoueurs[0]);
+        joueurCourant= listeJoueurs[0];
         placerTrousNoirsEtDesintegrateurs();
         lbl_Jcourant.setText(J1.Nom()); 
         
