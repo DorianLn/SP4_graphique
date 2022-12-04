@@ -60,7 +60,7 @@ public class fenetredejeu extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         lbl_Jcourant = new javax.swing.JLabel();
         Message = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        textemessage = new javax.swing.JTextArea();
         panneau_infos_jeu = new javax.swing.JPanel();
         lbl_J1_nom = new javax.swing.JLabel();
         lbl_J1_desint = new javax.swing.JLabel();
@@ -131,9 +131,9 @@ public class fenetredejeu extends javax.swing.JFrame {
         lbl_Jcourant.setText("NomJoueur ");
         panneau_infos_joueurs.add(lbl_Jcourant, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 30, -1, -1));
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        Message.setViewportView(jTextArea1);
+        textemessage.setColumns(20);
+        textemessage.setRows(5);
+        Message.setViewportView(textemessage);
 
         panneau_infos_joueurs.add(Message, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 250, 70));
 
@@ -347,6 +347,24 @@ public class fenetredejeu extends javax.swing.JFrame {
         lbl_J2_desint1.setText(listeJoueurs[1].getNombreDesintegrateurs()+"");
         
         
+        // partie du code pour dire qui a gagné :
+        boolean vict_j1 = plateau.GagnantePourCouleur(listeJoueurs[0].getCouleurJ());
+        boolean vict_j2 = plateau.GagnantePourCouleur(listeJoueurs[1].getCouleurJ());
+        
+        if(vict_j1 && ! vict_j2){
+            textemessage.setText("Victoire de : " + listeJoueurs[0].Nom());
+        }
+        if(vict_j2 && ! vict_j2){
+            textemessage.setText("Victoire de : " + listeJoueurs[1].Nom());
+        }
+        
+        if(vict_j1 && ! vict_j2){
+            if(joueurCourant == listeJoueurs[0]){
+                textemessage.setText("Victoire de : " + listeJoueurs[1].Nom());
+            }else{
+                textemessage.setText("Victoire de : " + listeJoueurs[2].Nom());
+            }
+        }
         
         if(resultatAction == 0 ){
             return false;
@@ -540,7 +558,6 @@ public class fenetredejeu extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JLabel lbl_J1_couleur;
     private javax.swing.JLabel lbl_J1_desint;
     private javax.swing.JLabel lbl_J1_nom;
@@ -552,5 +569,6 @@ public class fenetredejeu extends javax.swing.JFrame {
     private javax.swing.JPanel panneau_grille;
     private javax.swing.JPanel panneau_infos_jeu;
     private javax.swing.JPanel panneau_infos_joueurs;
+    private javax.swing.JTextArea textemessage;
     // End of variables declaration//GEN-END:variables
 }
