@@ -23,6 +23,14 @@ public class fenetredejeu extends javax.swing.JFrame {
         panneau_infos_joueurs.setVisible(false);  //on cache le panneau_infos_joueurs
         
         panneau_infos_jeu.setVisible(false);      //idem pour le panneau_infos_jeu
+        
+        for(int i=5; i>=0; i--){
+            for(int j=0;j<7; j++){
+                Cellule_graphique cellGraph = new Cellule_graphique();
+                panneau_grille.add(cellGraph);
+            }
+            
+        }
     }
 
     /**
