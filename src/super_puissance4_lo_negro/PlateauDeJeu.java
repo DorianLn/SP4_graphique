@@ -294,6 +294,12 @@ public class PlateauDeJeu {
         grille[x][y].supprimerDesintegrateur();
         
     }
+    
+    public void tassergrille(){
+        for(int i =1; i<7;i++){
+            tasserLigne(i);
+        }
+    }
  }
     
     

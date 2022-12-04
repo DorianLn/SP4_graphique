@@ -33,9 +33,22 @@ public class fenetredejeu extends javax.swing.JFrame {
                             return;
                         }
                         if(c.jetonCourant.getCouleur().equals(joueurCourant.getCouleurJ())){
+                            
                             textemessage.setText("le joueur" + joueurCourant.Nom() +" récupère un de ses jetons ");
+                            Jetons jrecup = c.recupererJeton();
+                            joueurCourant.ajouterJeton(jrecup);
+                            joueur_suivant();
                         }else{
-                            textemessage.setText("le joueur" + joueurCourant.Nom() +" veut desintégrer un jeton  ");
+                            if(joueurCourant.getNombreDesintegrateurs()>0){
+                                textemessage.setText("le joueur" + joueurCourant.Nom() +" desintégre un jeton  ");  
+                                c.supprimerJeton();
+                                joueurCourant.utiliserDesintegrateur();
+                                joueur_suivant();
+                            }
+                            else{
+                                return;
+                            }
+                            plateau.tassergrille();
                         }
                         
                         
