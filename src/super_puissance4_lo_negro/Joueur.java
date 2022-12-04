@@ -16,9 +16,9 @@ public class Joueur {
     private ArrayList<Jetons> reserveJetons = new ArrayList<Jetons>();
     private int nombreDesintegrateurs;
 
-    public Joueur(String nom, int nombreDesintegrateurs) {    //Constructeur de la classe Joueur
+    public Joueur(String nom) {    //Constructeur de la classe Joueur
         this.nom = nom;
-        this.nombreDesintegrateurs = nombreDesintegrateurs;
+        this.nombreDesintegrateurs = 0;
         nombreDesintegrateurs = 0;
     }
     

@@ -13,6 +13,7 @@ public class fenetredejeu extends javax.swing.JFrame {
     private Joueur[] listeJoueurs=new Joueur[2];// on créer les attributs demandés
     private Joueur joueurCourant;
     private PlateauDeJeu plateau = new PlateauDeJeu();
+    
 
     
     /**
@@ -32,6 +33,8 @@ public class fenetredejeu extends javax.swing.JFrame {
             }
             
         }
+      
+        
     }
 
     /**
@@ -216,6 +219,14 @@ public class fenetredejeu extends javax.swing.JFrame {
         
         panneau_infos_jeu.setVisible(true);      //idem pour le panneau_infos_jeu
         
+        
+        
+        
+        
+        
+        
+        
+        
     }//GEN-LAST:event_btn_partActionPerformed
 
     /**
@@ -251,6 +262,102 @@ public class fenetredejeu extends javax.swing.JFrame {
                 new fenetredejeu().setVisible(true);
             }
         });
+    }
+    
+    public void attribuerCouleurAuxJoueurs(){//méthode qui affecte une couleur aux joueurs aléatoirement 
+
+        int valeur=(int) (Math.random() * (2));
+        if (valeur==0){
+            listeJoueurs[0].affecterCouleur("rouge");//on affecte la couleur aux jouers avec la méthode affecter joueur
+            listeJoueurs[1].affecterCouleur("jaune");
+        }
+        else{
+            listeJoueurs[0].affecterCouleur("jaune");
+            listeJoueurs[1].affecterCouleur("rouge");
+        }
+    }
+    public void creerEtAffecterJeton(Joueur J1){//méthode qui créer 30 jetons et qui va les insérer dans le tableau de reserve du joueur 
+
+        if ("rouge".equals(J1.getCouleurJ())){  // si la couleur rouge est égal à la coueur du joueur 1
+            for (int i=0;i<31;i++){//alors on créer une boucle pour remplir la reserve du joueur de jeton rouge
+                Jetons jeton=new Jetons ("rouge");
+                J1.ajouterJeton(jeton);
+
+            }         
+        }
+
+        if ("jaune".equals(J1.getCouleurJ())){//même chose pour la couleur jaune 
+
+            for (int i=0;i<31;i++){
+                Jetons jeton=new Jetons ("jaune");
+                J1.ajouterJeton(jeton);
+            }
+        }
+    }
+
+    public void placerTrousNoirsEtDesintegrateurs(){//méthode qui place les trous noir et les desintégrateurs comme demandé
+
+        int i=0;
+        while (i<3){ //on place 2 desintégrateur et 2 trous noir comme demandé si il n'y a pas déjà des des trous noir ou désintégrateurs 
+            int x=(int) (Math.random() * (9-3));
+            int y=(int) (Math.random() * (8-3));
+            if (plateau.presenceDesintegrateur(x,y)==false){
+                if (plateau.presenceTrouNoir(x,y)==false){
+                    plateau.placerTrouNoir(x,y);
+                    plateau.placerDesintegrateur(x,y);
+                    i+=1;
+
+                }
+            }              
+        }
+
+        while (i<5){ //  On place trois  trous noir 
+
+            int x=(int) (Math.random() * (9-3));
+
+            int y=(int) (Math.random() * (8-3));
+
+            if (plateau.presenceDesintegrateur(x,y)==false){
+
+                if (plateau.presenceTrouNoir(x,y)==false){
+
+                    plateau.placerTrouNoir(x,y);                  
+                    i+=1;
+
+                }
+            }
+        }
+
+        while(i<7){//on place trois desintégrateur
+
+            int x=(int) (Math.random() * (9-3));
+            int y=(int) (Math.random() * (8-3));
+            if (plateau.presenceDesintegrateur(x,y)==false){
+                if (plateau.presenceTrouNoir(x,y)==false){
+                    plateau.placerDesintegrateur(x,y);
+                    i+=1;
+                }
+
+            }
+
+        }
+
+    }        
+
+    
+    public void initialiserPartie(){//méthode qui initialise une partie 
+        String nomJ1 =Nom_Joueur1.getText();
+        String nomJ2 =Nom_Joueur2.getText();
+        Joueur J1= new Joueur(nomJ1);
+        Joueur J2 = new Joueur(nomJ2);
+        
+        plateau.viderGrille(J1, J2);
+        attribuerCouleurAuxJoueurs();
+        creerEtAffecterJeton(listeJoueurs[1]);
+        creerEtAffecterJeton(listeJoueurs[0]);
+        placerTrousNoirsEtDesintegrateurs();
+    
+        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

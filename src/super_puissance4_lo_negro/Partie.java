@@ -130,6 +130,8 @@ public class Partie {
         attribuerCouleurAuxJoueurs();
         creerEtAffecterJeton(listeJoueurs[1]);
         creerEtAffecterJeton(listeJoueurs[0]);
+        placerTrousNoirsEtDesintegrateurs();
+        plateau.afficherGrilleSurConsole();
         
         
     }
