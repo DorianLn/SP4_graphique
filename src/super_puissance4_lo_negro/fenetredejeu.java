@@ -9,7 +9,12 @@ package super_puissance4_lo_negro;
  * @author doria
  */
 public class fenetredejeu extends javax.swing.JFrame {
+    
+    private Joueur[] listeJoueurs=new Joueur[2];// on créer les attributs demandés
+    private Joueur joueurCourant;
+    private PlateauDeJeu plateau;
 
+    
     /**
      * Creates new form fenetredejeu
      */
@@ -30,13 +35,13 @@ public class fenetredejeu extends javax.swing.JFrame {
     private void initComponents() {
 
         panneau_grille = new javax.swing.JPanel();
-        panneau_infos_joueurs = new javax.swing.JPanel();
+        panneau_création_partie = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         Nom_Joueur2 = new javax.swing.JTextField();
         Nom_Joueur1 = new javax.swing.JTextField();
         btn_part = new javax.swing.JButton();
-        panneau_création_partie = new javax.swing.JPanel();
+        panneau_infos_joueurs = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         lbl_Jcourant = new javax.swing.JLabel();
@@ -72,48 +77,53 @@ public class fenetredejeu extends javax.swing.JFrame {
         panneau_grille.setLayout(new java.awt.GridLayout(6, 7));
         getContentPane().add(panneau_grille, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 672, 576));
 
-        panneau_infos_joueurs.setBackground(new java.awt.Color(204, 255, 204));
-        panneau_infos_joueurs.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        panneau_création_partie.setBackground(new java.awt.Color(204, 255, 204));
+        panneau_création_partie.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setText("Nom Joueur2:");
-        panneau_infos_joueurs.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 80, -1));
+        panneau_création_partie.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 80, -1));
 
         jLabel2.setText("Nom Joueur1:");
-        panneau_infos_joueurs.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 90, 20));
-        panneau_infos_joueurs.add(Nom_Joueur2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 38, 130, -1));
+        panneau_création_partie.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 90, 20));
+        panneau_création_partie.add(Nom_Joueur2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 38, 130, -1));
 
         Nom_Joueur1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Nom_Joueur1ActionPerformed(evt);
             }
         });
-        panneau_infos_joueurs.add(Nom_Joueur1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 8, 130, -1));
+        panneau_création_partie.add(Nom_Joueur1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 8, 130, -1));
 
         btn_part.setText("Démarrer partie");
-        panneau_infos_joueurs.add(btn_part, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 80, -1, -1));
+        btn_part.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_partActionPerformed(evt);
+            }
+        });
+        panneau_création_partie.add(btn_part, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 80, -1, -1));
 
-        getContentPane().add(panneau_infos_joueurs, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 80, 290, 110));
+        getContentPane().add(panneau_création_partie, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 80, 290, 110));
 
-        panneau_création_partie.setBackground(new java.awt.Color(204, 255, 204));
-        panneau_création_partie.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        panneau_infos_joueurs.setBackground(new java.awt.Color(204, 255, 204));
+        panneau_infos_joueurs.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel3.setText("infos jeu");
-        panneau_création_partie.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 120, -1));
+        panneau_infos_joueurs.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 120, -1));
 
         jLabel7.setText("Joueur Courant :");
-        panneau_création_partie.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, -1, -1));
+        panneau_infos_joueurs.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, -1, -1));
 
         lbl_Jcourant.setText("NomJoueur ");
-        panneau_création_partie.add(lbl_Jcourant, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 30, -1, -1));
+        panneau_infos_joueurs.add(lbl_Jcourant, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 30, -1, -1));
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
         Message.setViewportView(jTextArea1);
 
-        panneau_création_partie.add(Message, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 250, 70));
+        panneau_infos_joueurs.add(Message, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 250, 70));
 
-        getContentPane().add(panneau_création_partie, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 470, 290, 140));
+        getContentPane().add(panneau_infos_joueurs, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 470, 290, 140));
 
         panneau_infos_jeu.setBackground(new java.awt.Color(204, 255, 204));
         panneau_infos_jeu.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -188,6 +198,16 @@ public class fenetredejeu extends javax.swing.JFrame {
     private void Nom_Joueur1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Nom_Joueur1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_Nom_Joueur1ActionPerformed
+
+    private void btn_partActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_partActionPerformed
+        // TODO add your handling code here:
+        //c'est ici que l'on peut écrire le code lié au bouton 
+        
+        panneau_infos_joueurs.setVisible(true);  //on affiche le panneau_infos_joueurs si le joueur clique sur bouton
+        
+        panneau_infos_jeu.setVisible(true);      //idem pour le panneau_infos_jeu
+        
+    }//GEN-LAST:event_btn_partActionPerformed
 
     /**
      * @param args the command line arguments

@@ -45,7 +45,7 @@
         <Property name="rows" type="int" value="6"/>
       </Layout>
     </Container>
-    <Container class="javax.swing.JPanel" name="panneau_infos_joueurs">
+    <Container class="javax.swing.JPanel" name="panneau_cr&#xe9;ation_partie">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="cc" green="ff" red="cc" type="rgb"/>
@@ -102,6 +102,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="D&#xe9;marrer partie"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_partActionPerformed"/>
+          </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
               <AbsoluteConstraints x="90" y="80" width="-1" height="-1"/>
@@ -110,7 +113,7 @@
         </Component>
       </SubComponents>
     </Container>
-    <Container class="javax.swing.JPanel" name="panneau_cr&#xe9;ation_partie">
+    <Container class="javax.swing.JPanel" name="panneau_infos_joueurs">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="cc" green="ff" red="cc" type="rgb"/>
