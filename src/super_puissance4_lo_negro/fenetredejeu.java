@@ -12,7 +12,7 @@ public class fenetredejeu extends javax.swing.JFrame {
     
     private Joueur[] listeJoueurs=new Joueur[2];// on créer les attributs demandés
     private Joueur joueurCourant;
-    private PlateauDeJeu plateau;
+    private PlateauDeJeu plateau = new PlateauDeJeu();
 
     
     /**
@@ -26,8 +26,9 @@ public class fenetredejeu extends javax.swing.JFrame {
         
         for(int i=5; i>=0; i--){
             for(int j=0;j<7; j++){
-                Cellule_graphique cellGraph = new Cellule_graphique();
+                Cellule_graphique cellGraph = new Cellule_graphique(plateau.grille[i][j]);
                 panneau_grille.add(cellGraph);
+                
             }
             
         }

@@ -14,7 +14,7 @@ public class Partie {
 
     private Joueur[] listeJoueurs=new Joueur[2];// on créer les attributs demandés
     private Joueur joueurCourant;
-    private PlateauDeJeu plateau;
+    private PlateauDeJeu plateau =new PlateauDeJeu();
 
  
 

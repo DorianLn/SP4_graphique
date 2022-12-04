@@ -12,6 +12,12 @@ import javax.swing.JButton;
  */
 public class Cellule_graphique extends JButton{
     CelluleDeGrille celluleAssociée;
+
+    public Cellule_graphique(CelluleDeGrille uneCellule) {
+        celluleAssociée=uneCellule;
+        
+        
+    }
     
     
     
