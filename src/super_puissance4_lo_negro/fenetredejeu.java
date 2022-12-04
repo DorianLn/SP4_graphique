@@ -15,6 +15,9 @@ public class fenetredejeu extends javax.swing.JFrame {
      */
     public fenetredejeu() {
         initComponents();
+        panneau_infos_joueurs.setVisible(false);  //on cache le panneau_infos_joueurs
+        
+        panneau_infos_jeu.setVisible(false);      //idem pour le panneau_infos_jeu
     }
 
     /**
@@ -132,19 +135,19 @@ public class fenetredejeu extends javax.swing.JFrame {
         panneau_infos_jeu.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 120, 290, 10));
 
         lbl_J2_desint1.setText("nbdesintJoueur2");
-        panneau_infos_jeu.add(lbl_J2_desint1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 190, 120, -1));
+        panneau_infos_jeu.add(lbl_J2_desint1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 190, 120, -1));
 
         lbl_J2_couleur1.setText("CouleurJoueur2");
-        panneau_infos_jeu.add(lbl_J2_couleur1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 160, -1, -1));
+        panneau_infos_jeu.add(lbl_J2_couleur1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 160, -1, -1));
 
         jLabel10.setText("Joueur 2 :");
-        panneau_infos_jeu.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, -1, -1));
+        panneau_infos_jeu.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 130, -1, -1));
 
         jLabel11.setText("Couleur :");
-        panneau_infos_jeu.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, -1, -1));
+        panneau_infos_jeu.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 160, -1, -1));
 
         jLabel12.setText("désintegrateurs :");
-        panneau_infos_jeu.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 190, 120, -1));
+        panneau_infos_jeu.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 190, 120, -1));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel4.setText("infos joueur");
@@ -154,7 +157,7 @@ public class fenetredejeu extends javax.swing.JFrame {
         panneau_infos_jeu.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, -1, -1));
 
         lbl_J2_nom2.setText("NomJoueur 2");
-        panneau_infos_jeu.add(lbl_J2_nom2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 130, -1, -1));
+        panneau_infos_jeu.add(lbl_J2_nom2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 130, -1, -1));
 
         getContentPane().add(panneau_infos_jeu, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 220, 290, 230));
 
