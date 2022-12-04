@@ -342,6 +342,12 @@ public class fenetredejeu extends javax.swing.JFrame {
         int resultatAction;
         resultatAction = plateau.AjouterJetonDansColonnes(joueurCourant.jouerJeton(), indice_colonne);
         panneau_grille.repaint();
+        
+        lbl_J1_desint.setText(listeJoueurs[0].getNombreDesintegrateurs()+"");
+        lbl_J2_desint1.setText(listeJoueurs[1].getNombreDesintegrateurs()+"");
+        
+        
+        
         if(resultatAction == 0 ){
             return false;
         }else{
