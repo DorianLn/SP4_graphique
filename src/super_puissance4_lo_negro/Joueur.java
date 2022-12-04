@@ -55,4 +55,7 @@ public class Joueur {
     public int getNombreDesintegrateurs(){
         return nombreDesintegrateurs;
     }
+    public String Nom(){
+        return nom;
+    }
 }
