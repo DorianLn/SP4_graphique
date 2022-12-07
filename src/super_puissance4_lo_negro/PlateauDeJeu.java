@@ -226,9 +226,9 @@ public class PlateauDeJeu {
     
     public void tasserLigne(int ColonneIndi){//méthode permettant de tasser une ligne lorsqu'un jeton est supprimer
         for(int i=0; i<5 ;i++){//on parcourt les lignes de la colonne de bas en haut 
-            if(grille[i][ColonneIndi]==null){//si la ligne de la colonne est null
-                grille[i][ColonneIndi]=grille[i+1][ColonneIndi];//alors on invers la ligne du dessus avec la ligne actuelle 
-                grille[i-1][ColonneIndi]=null;//et on met la ligne du dessus à null pour que la condition sur la ligne superieuir s'effectue
+            if(grille[i][ColonneIndi].presenceJeton()==false){//si la ligne ne comporte pas de jeton
+                grille[i][ColonneIndi].affecterJeton(grille[i+1][ColonneIndi].recupererJeton());//alors on invers la ligne du dessus avec la ligne actuelle 
+                grille[i+1][ColonneIndi].supprimerJeton();//et on met la ligne du dessus à null pour que la condition sur la ligne superieuir s'effectue
                 
             }
         }   
