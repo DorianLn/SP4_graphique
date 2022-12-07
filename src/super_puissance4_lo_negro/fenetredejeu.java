@@ -370,7 +370,7 @@ public class fenetredejeu extends javax.swing.JFrame {
     private void btn_col_6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_col_6ActionPerformed
         // TODO add your handling code here:
         jouerDansColonne(6);
-        joueur_suivant();
+        
         if (plateau.colonneRemplie(6) == true) {
             btn_col_6.setEnabled(false);
         }
@@ -380,8 +380,11 @@ public class fenetredejeu extends javax.swing.JFrame {
     public boolean jouerDansColonne(int indice_colonne) {
 
         int resultatAction;
-        //Partie du code qi ne marche pas car le tableau reservejeton des joueurs est considéré comme vide 
+         
         resultatAction = plateau.AjouterJetonDansColonnes(joueurCourant.jouerJeton(), indice_colonne);
+        if (resultatAction==11){
+            joueurCourant.obtenirDesintegrateur();
+        }
         panneau_grille.repaint();
 
         lbl_J1_desint.setText(listeJoueurs[0].getNombreDesintegrateurs() + "");
@@ -473,7 +476,7 @@ public class fenetredejeu extends javax.swing.JFrame {
 
     public void creerEtAffecterJeton(Joueur J1) {//méthode qui créer 30 jetons et qui va les insérer dans le tableau de reserve du joueur 
 
-        if ("rouge".equals(J1.getCouleurJ())) {  // si la couleur rouge est égal à la coueur du joueur 1
+        if ("Rouge".equals(J1.getCouleurJ())) {  // si la couleur rouge est égal à la coueur du joueur 1
             for (int i = 0; i < 31; i++) {//alors on créer une boucle pour remplir la reserve du joueur de jeton rouge
                 Jetons jeton = new Jetons("Rouge");
                 J1.ajouterJeton(jeton);

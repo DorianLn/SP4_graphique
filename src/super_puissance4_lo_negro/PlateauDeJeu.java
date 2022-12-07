@@ -24,15 +24,33 @@ public class PlateauDeJeu {
 
     
     public int AjouterJetonDansColonnes(Jetons jeton, int indice){
+        int a = 10;
         
-        for(int i =5; i>=0 ; i--){
-            if(grille[i][indice]==null){
+        for(int i =0; i<6 ; i++){
+            if(grille[i][indice].presenceJeton()==false && grille[i][indice].presenceDesintegrateur()==false && grille[i][indice].presenceTrouNoir()==false){
                 grille[i][indice].affecterJeton(jeton);//on ajoute le jeton dans la i ème ligne et la indice colonne 
+                System.out.println(grille[i][indice]);
+                a =i;
                 break;       
             }
-        return i;
+            else if(grille[i][indice].presenceTrouNoir()==true){
+                grille[i][indice].supprimerTrouNoir();
+                break;
+            }
+            else if(grille[i][indice].presenceDesintegrateur()==true){
+                grille[i][indice].supprimerDesintegrateur();
+                a=11;
+                break;
+            }
+        
         }
-        return 0;
+        if (a!=10){
+            return a;
+        }else {
+            
+            return 0;
+        }
+        
         
         
             
@@ -226,11 +244,11 @@ public class PlateauDeJeu {
     }
     
     
-    public boolean colonneRemplie(int C){
-        if(grille[0][C]!=null){//si la derniere colonne n'est pas egal à null alors la colonne est remplie 
-            return true;
-        }else{
+    public boolean colonneRemplie(int C){// "Rouge" soit "Jaune soit @ soit 
+        if(grille[5][C].presenceJeton() == false || grille[5][C].presenceDesintegrateur()== true || grille[5][C].presenceTrouNoir()==true ){//si la derniere colonne n'est pas egal à null alors la colonne est remplie 
             return false;
+        }else{
+            return true;
         }
     }     
     
