@@ -42,6 +42,7 @@ public class fenetredejeu extends javax.swing.JFrame {
                             if (joueurCourant.getNombreDesintegrateurs() > 0) {
                                 textemessage.setText("le joueur" + joueurCourant.Nom() + " desintégre un jeton  ");
                                 c.supprimerJeton();
+                                
                                 joueurCourant.utiliserDesintegrateur();
                                 joueur_suivant();
                             } else {
@@ -310,11 +311,12 @@ public class fenetredejeu extends javax.swing.JFrame {
 
     private void btn_col_0ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_col_0ActionPerformed
         // TODO add your handling code here:
-        joueur_suivant();
+        
+        jouerDansColonne(0);
         if (plateau.colonneRemplie(0) == true) {
             btn_col_0.setEnabled(false);
         }
-        jouerDansColonne(0);
+        joueur_suivant();
 
     }//GEN-LAST:event_btn_col_0ActionPerformed
 
