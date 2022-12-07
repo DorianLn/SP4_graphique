@@ -35,6 +35,7 @@ public class fenetredejeu extends javax.swing.JFrame {
 
                             textemessage.setText("le joueur" + joueurCourant.Nom() + " récupère un de ses jetons ");//soit on récupère le jeton 
                             Jetons jrecup = c.recupererJeton();
+                            plateau.tassergrille();
                             joueurCourant.ajouterJeton(jrecup);
                             joueur_suivant();
                         } else {//soit on le desintègre
