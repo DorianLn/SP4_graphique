@@ -382,35 +382,36 @@ public class fenetredejeu extends javax.swing.JFrame {
 
         int resultatAction;
          
-        resultatAction = plateau.AjouterJetonDansColonnes(joueurCourant.jouerJeton(), indice_colonne);
-        if (resultatAction==11){
+        resultatAction = plateau.AjouterJetonDansColonnes(joueurCourant.jouerJeton(), indice_colonne);//on place notre jeton dans le jeu 
+        if (resultatAction==11){//si le reusltat est egal à 11 alors cela veut dire que le joueur est tomber sur un désintégrateur
             joueurCourant.obtenirDesintegrateur();
         }
-        panneau_grille.repaint();
+        panneau_grille.repaint();//on repaint le jeu 
 
-        lbl_J1_desint.setText(listeJoueurs[0].getNombreDesintegrateurs() + "");
+        lbl_J1_desint.setText(listeJoueurs[0].getNombreDesintegrateurs() + "");//on met à jour l'interface graphique 
         lbl_J2_desint1.setText(listeJoueurs[1].getNombreDesintegrateurs() + "");
 
-        boolean vict_j1 = plateau.GagnantePourCouleur(listeJoueurs[0].getCouleurJ());
-        boolean vict_j2 = plateau.GagnantePourCouleur(listeJoueurs[1].getCouleurJ());
+        
 
         // partie du code pour dire qui a gagné :
-        if (vict_j1 && !vict_j2) {
-            textemessage.setText("Victoire de : " + listeJoueurs[0].Nom());
+        boolean vict_j1 = plateau.GagnantePourCouleur(listeJoueurs[0].getCouleurJ());
+        boolean vict_j2 = plateau.GagnantePourCouleur(listeJoueurs[1].getCouleurJ());
+        if (vict_j1 && !vict_j2) {//si le joueur 1 gagne mais pas le 2
+            textemessage.setText("Victoire de : " + listeJoueurs[0].Nom());//on affiche un message de victoire
         }
-        if (vict_j2 && !vict_j2) {
-            textemessage.setText("Victoire de : " + listeJoueurs[1].Nom());
+        if (vict_j2 && !vict_j2) {//si le joueur 2 gagne mais pas le 1
+            textemessage.setText("Victoire de : " + listeJoueurs[1].Nom());//on affiche un message de victoire
         }
 
-        if (vict_j1 && vict_j2) {
-            if (joueurCourant == listeJoueurs[0]) {
+        if (vict_j1 && vict_j2) {//si les deux joueurs gagnent simultanément
+            if (joueurCourant == listeJoueurs[0]) {//c'est le joueur qui vient de joueur le coup qui perd par défaut 
                 textemessage.setText("Victoire de : " + listeJoueurs[1].Nom());
             } else {
                 textemessage.setText("Victoire de : " + listeJoueurs[2].Nom());
             }
         }
 
-        if (resultatAction == 0) {
+        if (resultatAction == 0) {//si resultatAction egal à 0 cela veut dire que le joueur est tombé sur un trou noir 
             return false;
         } else {
             return true;
@@ -497,12 +498,12 @@ public class fenetredejeu extends javax.swing.JFrame {
     public void placerTrousNoirsEtDesintegrateurs() {//méthode qui place les trous noir et les desintégrateurs comme demandé
 
         int i = 0;
-        while (i < 2) { //on place 2 desintégrateur et 2 trous noir comme demandé si il n'y a pas déjà des des trous noir ou désintégrateurs 
-            int x = (int) (Math.random() * (9 - 3));
-            int y = (int) (Math.random() * (8 - 3));
-            if (plateau.presenceDesintegrateur(x, y) == false) {
-                if (plateau.presenceTrouNoir(x, y) == false) {
-                    plateau.placerTrouNoir(x, y);
+        while (i < 3) { //on place 3 desintégrateur et 3 trous noir comme demandé si il n'y a pas déjà des des trous noir ou désintégrateurs 
+            int x = (int) (Math.random() * (9 - 3));// on choisit une valeur aléatoire
+            int y = (int) (Math.random() * (8 - 3));//idem
+            if (plateau.presenceDesintegrateur(x, y) == false) {// si il n'y a pas de désintégrateur a la x ligne et y colonne 
+                if (plateau.presenceTrouNoir(x, y) == false) {// et si il n'y a pas de trou noir
+                    plateau.placerTrouNoir(x, y);//on place le trou noir et le desintégrateur au même endroit 
                     plateau.placerDesintegrateur(x, y);
                     i += 1;
 
@@ -510,7 +511,7 @@ public class fenetredejeu extends javax.swing.JFrame {
             }
         }
 
-        while (i < 5) { //  On place trois  trous noir 
+        while (i < 5) { //  On place deux  trous noir 
 
             int x = (int) (Math.random() * (9 - 3));
 
@@ -527,7 +528,7 @@ public class fenetredejeu extends javax.swing.JFrame {
             }
         }
 
-        while (i < 8) {//on place trois desintégrateur
+        while (i < 7) {//on place deux desintégrateur
 
             int x = (int) (Math.random() * (9 - 3));
             int y = (int) (Math.random() * (8 - 3));

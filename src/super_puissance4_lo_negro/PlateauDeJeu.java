@@ -24,20 +24,20 @@ public class PlateauDeJeu {
 
     
     public int AjouterJetonDansColonnes(Jetons jeton, int indice){
-        int a = 10;
+        int a = 10;//on pose une variable a = 10
         
         for(int i =0; i<6 ; i++){
-            if(grille[i][indice].presenceJeton()==false && grille[i][indice].presenceDesintegrateur()==false && grille[i][indice].presenceTrouNoir()==false){
+            if(grille[i][indice].presenceJeton()==false && grille[i][indice].presenceDesintegrateur()==false && grille[i][indice].presenceTrouNoir()==false){// si il n'y a pas de jeton , si il n'y a pas de trou noir ni de désintégrateur on peut poser un jeton  
                 grille[i][indice].affecterJeton(jeton);//on ajoute le jeton dans la i ème ligne et la indice colonne 
                 System.out.println(grille[i][indice]);
                 a =i;
                 break;       
             }
-            else if(grille[i][indice].presenceTrouNoir()==true){
+            else if(grille[i][indice].presenceTrouNoir()==true){// si il y a un trou noir alors on supprime le trou noir et on arrete
                 grille[i][indice].supprimerTrouNoir();
                 break;
             }
-            else if(grille[i][indice].presenceDesintegrateur()==true){
+            else if(grille[i][indice].presenceDesintegrateur()==true){// si il y a un desintégrateur on change  la valeur de a et on supprime le desintégrateur 
                 grille[i][indice].supprimerDesintegrateur();
                 a=11;
                 break;
@@ -123,6 +123,7 @@ public class PlateauDeJeu {
             return false;
         }
     }   
+    
     
     public boolean colonneGagnantePourCouleur(String Couleur){
         int cpt=0;//on pose un compteur egal à 0
